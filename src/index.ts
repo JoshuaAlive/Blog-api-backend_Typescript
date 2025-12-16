@@ -22,6 +22,7 @@ import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./config/swagger";
 import authRoutes from "./routes/auth";
+import blogRoutes from "./routes/blog";
 import { connectDB } from "./config/db";
 import morgan from "morgan";
 import cors from "cors";
@@ -37,6 +38,7 @@ const port = 3500;
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/blogs", blogRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port at http://localhost:${port}`);
